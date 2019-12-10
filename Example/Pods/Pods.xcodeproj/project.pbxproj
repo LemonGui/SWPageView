@@ -15,8 +15,11 @@
 		770D7160D8ED5F74ED38E0F757E9461D /* SWPageView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF132A225A57EC917C19C8F268293011 /* SWPageView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		882D6071B3190F84300F82741C4E9BED /* Pods-SWPageView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 31705D2F9B599E82C79D6BCD9446DD37 /* Pods-SWPageView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A0FE02EC55D023D0B5C50499E1CBBF8D /* Pods-SWPageView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4488C2F58B96C07C47C4C4B86A8A97 /* Pods-SWPageView_Example-dummy.m */; };
-		A8D186DA71F37A1729B31851942FF493 /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC855F91B4251B218A31F67BDA5D654 /* ReplaceMe.m */; };
 		ADBB3D4ED2F1FC85EC915630C6E7647F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		EB247D35239FFC02006A6000 /* SWPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB247D31239FFC02006A6000 /* SWPageView.m */; };
+		EB247D36239FFC02006A6000 /* SWScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB247D32239FFC02006A6000 /* SWScrollView.m */; };
+		EB247D37239FFC02006A6000 /* SWScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = EB247D33239FFC02006A6000 /* SWScrollView.h */; };
+		EB247D38239FFC02006A6000 /* SWPageView.h in Headers */ = {isa = PBXBuildFile; fileRef = EB247D34239FFC02006A6000 /* SWPageView.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,31 +46,34 @@
 		31705D2F9B599E82C79D6BCD9446DD37 /* Pods-SWPageView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SWPageView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		32E178CADF421EE0A665670C34B9C470 /* Pods-SWPageView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SWPageView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		497EB28FA82457E5389F475D63481D48 /* Pods_SWPageView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SWPageView_Example.framework; path = "Pods-SWPageView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		497EB28FA82457E5389F475D63481D48 /* Pods_SWPageView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWPageView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C57B01D5F578EF9B78C304A84602A43 /* Pods-SWPageView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SWPageView_Tests.modulemap"; sourceTree = "<group>"; };
-		4EC855F91B4251B218A31F67BDA5D654 /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = SWPageView/Classes/ReplaceMe.m; sourceTree = "<group>"; };
 		521A0F4429EE3A403F70335BCF80CB50 /* Pods-SWPageView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SWPageView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		59B79A902D828648187CFCB00119C3FC /* Pods-SWPageView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SWPageView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		5A8BF536717C0757B9382C4D7F1B1549 /* Pods_SWPageView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SWPageView_Tests.framework; path = "Pods-SWPageView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A8BF536717C0757B9382C4D7F1B1549 /* Pods_SWPageView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWPageView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7794B7BE5385D21C4046393875C9C0C9 /* Pods-SWPageView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SWPageView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		7A47BAF30947EEA1443D038C9048B728 /* SWPageView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SWPageView-Info.plist"; sourceTree = "<group>"; };
 		7D34EBBE15859D0A19F3E89E2FD94B96 /* SWPageView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SWPageView.xcconfig; sourceTree = "<group>"; };
 		7E4488C2F58B96C07C47C4C4B86A8A97 /* Pods-SWPageView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SWPageView_Example-dummy.m"; sourceTree = "<group>"; };
-		80C6EC614856690D37896E966C6A976E /* SWPageView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SWPageView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		80C6EC614856690D37896E966C6A976E /* SWPageView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SWPageView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		940A78209C22CF0CAE820CF75C7F5C9D /* SWPageView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SWPageView-dummy.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A281708DADBC0C2A504F3F957812B84E /* Pods-SWPageView_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SWPageView_Tests-Info.plist"; sourceTree = "<group>"; };
 		A9C5C4EBCB77622892B4ABEE3D46756B /* Pods-SWPageView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SWPageView_Example-umbrella.h"; sourceTree = "<group>"; };
 		AE8C72EEE0C6C2F5BFE65A8182CF0960 /* Pods-SWPageView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SWPageView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		AF132A225A57EC917C19C8F268293011 /* SWPageView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWPageView-umbrella.h"; sourceTree = "<group>"; };
-		B061A34B5B13797F6986DC055E416274 /* SWPageView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SWPageView.framework; path = SWPageView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8B8AF7E9DBC10AC161E7C8CA6250BDC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		BB864F2AF1AB2DF793A4C6715A4812AE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B061A34B5B13797F6986DC055E416274 /* SWPageView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SWPageView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8B8AF7E9DBC10AC161E7C8CA6250BDC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BB864F2AF1AB2DF793A4C6715A4812AE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C2AC516B5FAC6E8849DF355F405F8532 /* Pods-SWPageView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SWPageView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB8CA709487A54FF0CCF89E4226AE5E6 /* Pods-SWPageView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SWPageView_Tests-dummy.m"; sourceTree = "<group>"; };
 		CE12868C984AB609DF6D60F22FB5D3B6 /* Pods-SWPageView_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SWPageView_Example-Info.plist"; sourceTree = "<group>"; };
 		D111052559D709D44FD3743AE4D9AF96 /* Pods-SWPageView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SWPageView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D6347B32D0DD9313C55CEF5B98D112C3 /* Pods-SWPageView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SWPageView_Example.modulemap"; sourceTree = "<group>"; };
+		EB247D31239FFC02006A6000 /* SWPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPageView.m; path = SWPageView/Classes/SWPageView.m; sourceTree = "<group>"; };
+		EB247D32239FFC02006A6000 /* SWScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWScrollView.m; path = SWPageView/Classes/SWScrollView.m; sourceTree = "<group>"; };
+		EB247D33239FFC02006A6000 /* SWScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWScrollView.h; path = SWPageView/Classes/SWScrollView.h; sourceTree = "<group>"; };
+		EB247D34239FFC02006A6000 /* SWPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPageView.h; path = SWPageView/Classes/SWPageView.h; sourceTree = "<group>"; };
 		F4BAFF6FBD32CBA88196157A72936C1E /* SWPageView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SWPageView-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,7 +183,10 @@
 		76988C8DCF7878D0B640EAF3A6DD67D2 /* SWPageView */ = {
 			isa = PBXGroup;
 			children = (
-				4EC855F91B4251B218A31F67BDA5D654 /* ReplaceMe.m */,
+				EB247D34239FFC02006A6000 /* SWPageView.h */,
+				EB247D31239FFC02006A6000 /* SWPageView.m */,
+				EB247D33239FFC02006A6000 /* SWScrollView.h */,
+				EB247D32239FFC02006A6000 /* SWScrollView.m */,
 				045FBD1B3074675AA65037913778E529 /* Pod */,
 				2E86BCC489B29E52CBC423BAC0C0B522 /* Support Files */,
 			);
@@ -228,7 +237,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB247D37239FFC02006A6000 /* SWScrollView.h in Headers */,
 				65FF2808E3C3C9F3712DD72144E51D76 /* Pods-SWPageView_Example-umbrella.h in Headers */,
+				EB247D38239FFC02006A6000 /* SWPageView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +377,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0FE02EC55D023D0B5C50499E1CBBF8D /* Pods-SWPageView_Example-dummy.m in Sources */,
+				EB247D35239FFC02006A6000 /* SWPageView.m in Sources */,
+				EB247D36239FFC02006A6000 /* SWScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8D186DA71F37A1729B31851942FF493 /* ReplaceMe.m in Sources */,
 				56E8E079A3E1DA8ABC7E3E074256C9D5 /* SWPageView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,8 +500,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
