@@ -1,0 +1,6 @@
+framework module SWPageView {
+  umbrella header "SWPageView-umbrella.h"
+
+  export *
+  module * { export * }
+}

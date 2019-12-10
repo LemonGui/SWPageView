@@ -1,0 +1,16 @@
+PODS:
+  - SWPageView (0.1.0)
+
+DEPENDENCIES:
+  - SWPageView (from `../`)
+
+EXTERNAL SOURCES:
+  SWPageView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SWPageView: 413ce7dbc66248445279d9eb7bbd4986fddc7cf6
+
+PODFILE CHECKSUM: d6a352921c6416979140fdb80b65aff8438f19a2
+
+COCOAPODS: 1.8.4

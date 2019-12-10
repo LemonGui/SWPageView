@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'SWPageView_Example' do
+  pod 'SWPageView', :path => '../'
+
+  target 'SWPageView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
