@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface UIView (SWFrame)
+
 @property (nonatomic, assign) CGPoint origin;
 @property (nonatomic, assign) CGSize size;
 @property (nonatomic, assign) CGFloat top;
@@ -26,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat y;
 @property (nonatomic, assign) CGFloat centerX;
 @property (nonatomic, assign) CGFloat centerY;
+
 @end
 
 NS_ASSUME_NONNULL_END
