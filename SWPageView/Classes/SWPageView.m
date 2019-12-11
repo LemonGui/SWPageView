@@ -1,12 +1,11 @@
 //
 //  SWPageView.m
-//  SBBarModule
 //
 //  Created by Lemon on 2019/12/9.
 //
 
 #import "SWPageView.h"
-
+#import "UIView+SWFrame.h"
 static void * kSWPageViewContext = &kSWPageViewContext;
 
 @interface SWPageView ()<UIScrollViewDelegate>

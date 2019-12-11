@@ -1,6 +1,5 @@
 //
 //  SWPageView.h
-//  SBBarModule
 //
 //  Created by Lemon on 2019/12/9.
 //

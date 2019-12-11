@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "SWPageView.h"
+#import "SWScrollView.h"
 
 FOUNDATION_EXPORT double SWPageViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char SWPageViewVersionString[];
