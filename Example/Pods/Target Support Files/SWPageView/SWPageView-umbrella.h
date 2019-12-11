@@ -12,6 +12,7 @@
 
 #import "SWPageView.h"
 #import "SWScrollView.h"
+#import "UIView+SWFrame.h"
 
 FOUNDATION_EXPORT double SWPageViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char SWPageViewVersionString[];

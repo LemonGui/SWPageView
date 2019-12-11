@@ -8,14 +8,20 @@
 
 @implementation SWScrollView
 
-//- (instancetype)init
-//{
-//    self = [super init];
-//    if (self) {
-//        self.delaysContentTouches = NO;
-//    }
-//    return self;
-//}
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.delaysContentTouches = NO;
+    }
+    return self;
+}
+
+-(BOOL)touchesShouldCancelInContentView:(UIView *)view
+{
+    [super touchesShouldCancelInContentView:view];
+    return YES;
+}
 
 //- (BOOL)touchesShouldBegin:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event inContentView:(UIView *)view {
 //    for (UIResponder *nextRespoder = view.nextResponder; nextRespoder; nextRespoder = nextRespoder.nextResponder) {
@@ -36,11 +42,6 @@
 //    return [super touchesShouldBegin:touches withEvent:event inContentView:view];
 //}
 
-//-(BOOL)touchesShouldCancelInContentView:(UIView *)view
-//{
-//    [super touchesShouldCancelInContentView:view];
-//    return YES;
-//}
 
 @end
 

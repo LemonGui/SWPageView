@@ -21,6 +21,8 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		6C721AFE23A08A010015C2A2 /* SWBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C721AFD23A08A010015C2A2 /* SWBaseTableView.m */; };
+		6C7F2A0523A0C0D7008596CE /* SWHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7F2A0423A0C0D7008596CE /* SWHeadView.m */; };
 		6C8A45CD23A07B9C006FC5EA /* SWController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A45CC23A07B9C006FC5EA /* SWController1.m */; };
 		6C8A45D023A07BE9006FC5EA /* SWSlideSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A45CF23A07BE9006FC5EA /* SWSlideSegmentControl.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
@@ -62,6 +64,10 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		6302D10F61397EF3BDE829F9 /* Pods-SWPageView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWPageView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SWPageView_Tests/Pods-SWPageView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6BDE5BEC40B1065AD37E97E7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		6C721AFC23A08A010015C2A2 /* SWBaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWBaseTableView.h; sourceTree = "<group>"; };
+		6C721AFD23A08A010015C2A2 /* SWBaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWBaseTableView.m; sourceTree = "<group>"; };
+		6C7F2A0323A0C0D7008596CE /* SWHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWHeadView.h; sourceTree = "<group>"; };
+		6C7F2A0423A0C0D7008596CE /* SWHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWHeadView.m; sourceTree = "<group>"; };
 		6C8A45CB23A07B9C006FC5EA /* SWController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWController1.h; sourceTree = "<group>"; };
 		6C8A45CC23A07B9C006FC5EA /* SWController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWController1.m; sourceTree = "<group>"; };
 		6C8A45CE23A07BE9006FC5EA /* SWSlideSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSlideSegmentControl.h; sourceTree = "<group>"; };
@@ -69,7 +75,7 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C37DD10C35DDB62BFA37B6A /* Pods_SWPageView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWPageView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9841C7824606C5B61A776657 /* SWPageView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SWPageView.podspec; path = ../SWPageView.podspec; sourceTree = "<group>"; };
+		9841C7824606C5B61A776657 /* SWPageView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SWPageView.podspec; path = ../SWPageView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ACE02CF33381EE8975BE5570 /* Pods_SWPageView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWPageView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2354EBA1C8D143493B23040 /* Pods-SWPageView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWPageView_Tests.release.xcconfig"; path = "Target Support Files/Pods-SWPageView_Tests/Pods-SWPageView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F8B6BBF7B484CA8874DCAF94 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -145,6 +151,10 @@
 				6003F5A6195388D20070C39A /* SWViewController.m */,
 				6C8A45CB23A07B9C006FC5EA /* SWController1.h */,
 				6C8A45CC23A07B9C006FC5EA /* SWController1.m */,
+				6C7F2A0323A0C0D7008596CE /* SWHeadView.h */,
+				6C7F2A0423A0C0D7008596CE /* SWHeadView.m */,
+				6C721AFC23A08A010015C2A2 /* SWBaseTableView.h */,
+				6C721AFD23A08A010015C2A2 /* SWBaseTableView.m */,
 				6C8A45CE23A07BE9006FC5EA /* SWSlideSegmentControl.h */,
 				6C8A45CF23A07BE9006FC5EA /* SWSlideSegmentControl.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
@@ -378,6 +388,8 @@
 				6C8A45CD23A07B9C006FC5EA /* SWController1.m in Sources */,
 				6003F5A7195388D20070C39A /* SWViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				6C721AFE23A08A010015C2A2 /* SWBaseTableView.m in Sources */,
+				6C7F2A0523A0C0D7008596CE /* SWHeadView.m in Sources */,
 				6C8A45D023A07BE9006FC5EA /* SWSlideSegmentControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

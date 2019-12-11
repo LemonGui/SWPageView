@@ -5,7 +5,7 @@
 //
 
 #import "SWSlideSegmentControl.h"
-
+#import <UIView+SWFrame.h>
 @interface SWSlideSegmentControl ()
 @property (nonatomic,strong) UIView * baseView;
 @property (nonatomic,strong) UIView * slidBottomLineView;
@@ -65,28 +65,44 @@
     self.currentIndex = 0;
 }
 
+-(void)setSkinStyle:(NSInteger)skinStyle{
+    self.backgroundColor = self.normalbackColor;
+    self.slidView.backgroundColor = self.selectBackColor;
+    self.slidBackView.backgroundColor = self.selectBackColor;
+    self.slidBottomLineView.backgroundColor = self.slidBottomLineColor;
+    for (int i = 0; i < self.bottomBtnArray.count; i++) {
+        UIButton * bottomBtn = self.bottomBtnArray[i];
+        UIButton * topBtn = self.topBtnArray[i];
+        [bottomBtn setTitleColor:self.normalTitleColor forState:UIControlStateNormal];
+        [bottomBtn setTitleColor:self.normalTitleColor forState:UIControlStateHighlighted];
+        [topBtn setTitleColor:self.selectTitleColor forState:UIControlStateNormal];
+        [topBtn setTitleColor:self.selectTitleColor forState:UIControlStateHighlighted];
+    }
+}
+
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.baseView.frame = CGRectMake(_slidMargin, _slidMargin, self.frame.size.width - 2 * _slidMargin, self.frame.size.height - 2 * _slidMargin);
+    self.baseView.frame = CGRectMake(_slidMargin, _slidMargin, self.width - 2 * _slidMargin, self.height - 2 * _slidMargin);
     CGFloat width = 0;
     if (self.bottomBtnArray.count > 0) {
-        width = self.baseView.frame.size.width/self.bottomBtnArray.count;
+        width = self.baseView.width/self.bottomBtnArray.count;
     }
     [self.bottomBtnArray enumerateObjectsUsingBlock:^(UIButton *  _Nonnull btn, NSUInteger idx, BOOL * _Nonnull stop) {
-        btn.frame = CGRectMake(idx * width, 0, width, self.baseView.frame.size.height);
+        btn.frame = CGRectMake(idx * width, 0, width, self.baseView.height);
     }];
     UIButton * btn = (UIButton *)self.bottomBtnArray[self.currentIndex];
-    self.slidBottomLineView.frame = CGRectMake(0, self.frame.size.height - _slidBottomLineHeight - _slidBottomLinPadding, _slidBottomLineWidth, _slidBottomLineHeight);
-    self.slidBottomLineView.center = CGPointMake(btn.center.x + self.slidMargin + (btn.titleLabel.center.x - btn.frame.size.width/2), self.slidBottomLineView.center.y) ;
+    self.slidBottomLineView.frame = CGRectMake(0, self.height - _slidBottomLineHeight - _slidBottomLinPadding, _slidBottomLineWidth, _slidBottomLineHeight);
+    self.slidBottomLineView.centerX = btn.centerX + self.slidMargin + (btn.titleLabel.centerX - btn.width/2);
     self.slidBottomLineView.layer.cornerRadius = _slidBottomLineHeight/2;
-    self.slidView.frame = CGRectMake(self.currentIndex * width, 0, width, self.baseView.frame.size.height);
+    self.slidView.frame = CGRectMake(self.currentIndex * width, 0, width, self.baseView.height);
     self.slidBackView.frame = self.slidView.frame;
-    self.slidWrapView.frame = CGRectMake(-self.currentIndex * width, 0, self.baseView.frame.size.width, self.baseView.frame.size.height);
+    self.slidWrapView.frame = CGRectMake(-self.currentIndex * width, 0, self.baseView.width, self.baseView.height);
     [self.topBtnArray enumerateObjectsUsingBlock:^(UIButton *  _Nonnull btn, NSUInteger idx, BOOL * _Nonnull stop) {
-        btn.frame = CGRectMake(idx * width, 0, width, self.baseView.frame.size.height);
+        btn.frame = CGRectMake(idx * width, 0, width, self.baseView.height);
     }];
     
     self.slidBottomLineView.hidden = !self.showSlidBottomLine;
+    [self setSkinStyle:0];
 }
 
 #pragma mark - Actions
@@ -103,19 +119,13 @@
     
     CGFloat width = 0;
     if (self.bottomBtnArray.count > 0) {
-        width = self.baseView.frame.size.width/self.bottomBtnArray.count;
+        width = self.baseView.width/self.bottomBtnArray.count;
     }
     [UIView animateWithDuration:_durationTime animations:^{
-        CGRect slidFrame = self.slidView.frame;
-        slidFrame.origin.x =  btn.tag * width;
-        self.slidView.frame = slidFrame;
-        CGRect slidBackFrame = self.slidBackView.frame;
-        slidBackFrame.origin.x =  self.slidView.frame.origin.x;
-        self.slidBackView.frame = slidBackFrame;
-        CGRect slidWrapFrame = self.slidWrapView.frame;
-        slidWrapFrame.origin.x =  - btn.tag * width;
-        self.slidWrapView.frame = slidWrapFrame;
-        self.slidBottomLineView.center = CGPointMake(btn.center.x + self.slidMargin + (btn.titleLabel.center.x - btn.frame.size.width/2), self.slidBottomLineView.center.y);
+        self.slidView.x = btn.tag * width;
+        self.slidBackView.x = self.slidView.x;
+        self.slidWrapView.x = - btn.tag * width;
+        self.slidBottomLineView.centerX = btn.centerX + self.slidMargin + (btn.titleLabel.centerX - btn.width/2);
     } completion:^(BOOL finished) {
         if (self.currentIndex!=btn.tag) {
             if (self.selectedBlock) {

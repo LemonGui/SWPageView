@@ -9,12 +9,15 @@
 static void * kSWPageViewContext = &kSWPageViewContext;
 
 @interface SWPageView ()<UIScrollViewDelegate>
+@property (nonatomic,strong) UIView * switchContainerView;
 @property (nonatomic,strong) UIView * containerView;
 @property (nonatomic,strong) UIScrollView * containerScrollView;
-//@property (nonatomic,strong) UIScrollView * currentScrollView;
+@property (nonatomic,assign) float lastContentOffsetX;
+
 @end
 
 @implementation SWPageView
+
 - (instancetype)init
 {
     self = [super init];
@@ -44,7 +47,10 @@ static void * kSWPageViewContext = &kSWPageViewContext;
 -(UIScrollView *)containerScrollView{
     if (!_containerScrollView) {
         _containerScrollView = [[UIScrollView alloc] init];
+        _containerScrollView.pagingEnabled = YES;
         _containerScrollView.delegate = self;
+        _containerScrollView.bounces = NO;
+        _containerScrollView.showsHorizontalScrollIndicator = NO;
         [self.containerView addSubview:_containerScrollView];
     }
     return _containerScrollView;
@@ -59,7 +65,15 @@ static void * kSWPageViewContext = &kSWPageViewContext;
 -(void)setSwitchView:(UIView *)switchView{
     _switchView = switchView;
     [switchView removeFromSuperview];
-    [self.mainScrollView addSubview:switchView];
+    [self.switchContainerView addSubview:switchView];
+}
+
+-(UIView *)switchContainerView{
+    if (!_switchContainerView) {
+        _switchContainerView = [[UIView alloc] init];
+        [self.mainScrollView addSubview:_switchContainerView];
+    }
+    return _switchContainerView;
 }
 
 -(void)setItemViewArray:(NSArray *)itemViewArray{
@@ -75,6 +89,27 @@ static void * kSWPageViewContext = &kSWPageViewContext;
     }];
 }
 
+-(void)setIndex:(NSInteger)index{
+    _index = index;
+    if (_containerScrollView) {
+        [_containerScrollView setContentOffset:CGPointMake(_index * _containerScrollView.width, 0) animated:NO];
+    }
+    if (_itemViewArray) {
+        self.currentScrollView = _itemViewArray[index];
+    }
+}
+
+-(void)setCurrentScrollView:(UIScrollView *)currentScrollView{
+    _currentScrollView = currentScrollView;
+    CGFloat h = MAX(_currentScrollView.contentSize.height, _currentScrollView.height);
+    if (self.mainScrollView.contentOffset.y < self.headHeight - self.topInset) {
+        _currentScrollView.contentOffset = CGPointMake(0, 0);
+    }else{
+        self.mainScrollView.contentOffset = CGPointMake(0, _currentScrollView.contentOffset.y + self.headHeight - self.topInset);
+    }
+    self.mainScrollView.contentSize = CGSizeMake(0, h + self.headHeight + self.switchView.height);
+}
+
 -(void)dealloc{
     [_itemViewArray enumerateObjectsUsingBlock:^(UIView *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj removeFromSuperview];
@@ -84,30 +119,54 @@ static void * kSWPageViewContext = &kSWPageViewContext;
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if (context == kSWPageViewContext) {
-        CGFloat h = _currentScrollView.contentSize.height;
-        self.mainScrollView.contentSize = CGSizeMake(0, h + self.headView.height + self.switchView.height);
+        CGFloat h = MAX(_currentScrollView.contentSize.height, _currentScrollView.height);
+        self.mainScrollView.contentSize = CGSizeMake(0, h + self.headHeight + self.switchView.height);
     }
+}
+
+-(void)reloadViews{
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.mainScrollView.frame = self.bounds;
     self.headView.frame = CGRectMake(0, 0, self.width, self.headHeight);
-    self.switchView.frame = CGRectMake(0, 0, self.width, 40);
-    self.containerView.frame = CGRectMake(0, 0, self.width, self.height - self.switchView.height);
+    self.switchContainerView.frame = CGRectMake(0, 0, self.width, self.switchView ? self.switchView.height : 0);
+    self.switchView.frame = self.switchContainerView.bounds;
+    self.containerView.frame = CGRectMake(0, 0, self.width, self.height - self.switchContainerView.height);
     self.containerScrollView.frame = self.containerView.bounds;
+    self.containerScrollView.contentSize = CGSizeMake(_itemViewArray.count * self.containerScrollView.width, 0);
     [_itemViewArray enumerateObjectsUsingBlock:^(UIView *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.frame = self.containerScrollView.bounds;
+        obj.frame = CGRectMake(idx * self.containerScrollView.width, 0, self.containerScrollView.width, self.containerScrollView.height);
     }];
+    
     [self layoutOffset];
+    
+    [_containerScrollView setContentOffset:CGPointMake(_index * _containerScrollView.width, 0) animated:NO];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewDidSwitch:index:)]) {
+        self.index = _index;
+        self.currentScrollView = self.itemViewArray[_index];
+        [self.delegate pageViewDidSwitch:self index:_index];
+    }
 }
 
 
 -(void)layoutOffset{
     CGFloat offsetY = self.mainScrollView.contentOffset.y;
-    self.switchView.y = MAX(self.headView.bottom, offsetY);
-    self.containerView.y = MAX(self.switchView.bottom, offsetY);
-    self.currentScrollView.contentOffset = CGPointMake(0, MAX(0, offsetY - self.headView.height));
+    CGFloat del = self.headHeight - self.topInset;
+    if (offsetY < del) {
+        self.headView.y = 0;
+        self.switchContainerView.y = self.headHeight;
+        self.containerView.y = self.switchContainerView.bottom;
+        self.currentScrollView.contentOffset = CGPointMake(0, 0);
+    }else{
+        self.headView.bottom = offsetY + self.topInset;
+        self.switchContainerView.y = offsetY + self.topInset;
+        self.containerView.y = self.switchContainerView.bottom;
+        self.currentScrollView.contentOffset = CGPointMake(0, offsetY - del);
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -115,6 +174,25 @@ static void * kSWPageViewContext = &kSWPageViewContext;
         [self layoutOffset];
         if ([self.currentScrollView.delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
             [self.currentScrollView.delegate scrollViewDidScroll:self.currentScrollView];
+        }
+        if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewMainScrollViewDidScroll:scrollView:)]) {
+            [self.delegate pageViewMainScrollViewDidScroll:self scrollView:scrollView];
+        }
+    }
+    if (scrollView == self.containerScrollView) {
+        float singleWidth = scrollView.width;
+        NSUInteger index;
+        if (scrollView.contentOffset.x > self.lastContentOffsetX) {
+            index  = ceil(scrollView.contentOffset.x/singleWidth);
+        }else{
+            index  = floor(scrollView.contentOffset.x/singleWidth);
+        }
+        if (self.mainScrollView.contentOffset.y < self.headHeight - self.topInset) {
+            ((UIScrollView *)_itemViewArray[index]).contentOffset = CGPointMake(0, 0);
+        }
+        self.lastContentOffsetX = scrollView.contentOffset.x;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewWillSwitch:index:)]) {
+            [self.delegate pageViewWillSwitch:self index:index];
         }
     }
 }
@@ -131,6 +209,14 @@ static void * kSWPageViewContext = &kSWPageViewContext;
     if (scrollView == self.mainScrollView) {
         if ([self.currentScrollView.delegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
             [self.currentScrollView.delegate scrollViewDidEndDecelerating:self.currentScrollView];
+        }
+    }
+    if (scrollView == self.containerScrollView) {
+        NSInteger index = scrollView.contentOffset.x / scrollView.width;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewDidSwitch:index:)]) {
+            self.index = index;
+            self.currentScrollView = self.itemViewArray[index];
+            [self.delegate pageViewDidSwitch:self index:index];
         }
     }
 }
